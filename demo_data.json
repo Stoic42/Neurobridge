@@ -1,0 +1,104 @@
+{
+  "demo_scenarios": [
+    {
+      "id": 1,
+      "title": "Frustration with Technology",
+      "userRole": "ASD",
+      "targetRole": "NT",
+      "originalText": "This computer is broken and I can't do my work and I'm going to be late and everything is ruined!",
+      "description": "High emotional intensity communication about technical difficulties"
+    },
+    {
+      "id": 2,
+      "title": "Social Invitation Confusion",
+      "userRole": "ASD", 
+      "targetRole": "NT",
+      "originalText": "I don't understand if you want me to come to the party or not. You said maybe but I need to know for sure.",
+      "description": "Direct communication about social uncertainty"
+    },
+    {
+      "id": 3,
+      "title": "Workplace Communication",
+      "userRole": "NT",
+      "targetRole": "ASD", 
+      "originalText": "Hey, could you maybe take a look at this when you get a chance? No rush, but it would be great if you could help out.",
+      "description": "Indirect NT communication that might be unclear"
+    },
+    {
+      "id": 4,
+      "title": "Sensory Overload",
+      "userRole": "ASD",
+      "targetRole": "NT",
+      "originalText": "The lights are too bright and the noise is too loud and I can't think and I need to leave now.",
+      "description": "Communication about sensory overwhelm"
+    },
+    {
+      "id": 5,
+      "title": "Routine Change",
+      "userRole": "ASD",
+      "targetRole": "NT", 
+      "originalText": "You changed the schedule without telling me and now I don't know what to do and I'm confused and upset.",
+      "description": "Communication about unexpected changes"
+    },
+    {
+      "id": 6,
+      "title": "Emotional Support Request",
+      "userRole": "NT",
+      "targetRole": "ASD",
+      "originalText": "I'm feeling really down today and could use some support. Would you be able to talk or just be around?",
+      "description": "NT request for emotional support"
+    },
+    {
+      "id": 7,
+      "title": "Task Instructions",
+      "userRole": "NT", 
+      "targetRole": "ASD",
+      "originalText": "Can you handle the presentation tomorrow? It's pretty important for the team meeting.",
+      "description": "Unclear task assignment"
+    },
+    {
+      "id": 8,
+      "title": "Social Boundaries",
+      "userRole": "ASD",
+      "targetRole": "NT",
+      "originalText": "I need you to stop asking me questions about my personal life. It makes me uncomfortable and I don't want to talk about it.",
+      "description": "Setting clear boundaries"
+    }
+  ],
+  "tone_examples": {
+    "direct": {
+      "original": "I need help with this problem.",
+      "adjusted": "I need immediate assistance with this technical issue. Please help me resolve it as soon as possible."
+    },
+    "gentle": {
+      "original": "I need help with this problem.", 
+      "adjusted": "I would appreciate some guidance with this issue when you have a moment. Thank you for your help."
+    },
+    "empathetic": {
+      "original": "I need help with this problem.",
+      "adjusted": "I'm struggling with this issue and would really value your support. I know you're busy, but your help would mean a lot to me."
+    }
+  },
+  "emotion_intensity_examples": [
+    {
+      "text": "I'm fine.",
+      "intensity": 20,
+      "description": "Low emotional intensity - calm state"
+    },
+    {
+      "text": "I'm a bit concerned about this situation.",
+      "intensity": 40,
+      "description": "Moderate emotional intensity - some concern"
+    },
+    {
+      "text": "I'm really worried and stressed about this.",
+      "intensity": 70,
+      "description": "High emotional intensity - significant stress"
+    },
+    {
+      "text": "I'm extremely upset and overwhelmed and I can't handle this!",
+      "intensity": 90,
+      "description": "Very high emotional intensity - crisis state"
+    }
+  ]
+}
