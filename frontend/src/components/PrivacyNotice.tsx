@@ -20,7 +20,11 @@ const PrivacyNotice: React.FC<PrivacyNoticeProps> = ({ className = '', showAsMod
   // Modal overlay for initial consent
   if (showAsModal) {
     return (
-      <div className="fixed inset-0 bg-white z-[9999] flex items-center justify-center p-4" aria-hidden={!showAsModal}>
+      <div 
+        className="fixed inset-0 bg-white z-[9999] flex items-center justify-center p-4" 
+        style={{ backgroundColor: 'rgba(255, 255, 255, 0.98)', backdropFilter: 'blur(4px)' }}
+        aria-hidden={!showAsModal}
+      >
         <div
           ref={modalRef}
           className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl ring-1 ring-gray-200"
@@ -184,4 +188,5 @@ const PrivacyContent: React.FC = () => (
 );
 
 export default PrivacyNotice;
+
 
