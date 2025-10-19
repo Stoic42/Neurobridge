@@ -31,25 +31,23 @@ function App() {
         <PrivacyNotice showAsModal={true} />
       )}
       
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-gradient-to-r from-primary-50 to-blue-50 shadow-sm border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-3">
-                <div className="text-2xl" aria-hidden="true">🌉</div>
+                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-gray-200" aria-hidden="true">🌉</div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">NeuroBridge</h1>
+                  <h1 className="text-2xl font-bold tracking-tight text-gray-900">NeuroBridge</h1>
                   <p className="text-sm text-gray-600">AI Communication Bridge</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="text-sm text-gray-500">
-                  Bridging ASD & NT Communication
-                </div>
+                <div className="text-sm text-gray-600">Bridging ASD & NT Communication</div>
                 <button
                   onClick={() => useAppStore.getState().setShowPrivacyNotice(true)}
-                  className="p-2 rounded-full hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                  className="p-2 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                   aria-label="Open privacy and settings"
                   title="Privacy & Settings"
                 >
