@@ -52,24 +52,24 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({ className = '' }) => {
 
   return (
     <div className={`history-panel ${className}`}>
-      <div className="bg-white rounded-lg border border-gray-200">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-800">
-            Translation History ({history.length})
-          </h3>
+          <h3 className="text-lg font-semibold text-gray-800">Translation History ({history.length})</h3>
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="text-gray-500 hover:text-gray-700 transition-colors"
+              className="px-2 py-1 rounded-md text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors"
               title={isExpanded ? 'Collapse' : 'Expand'}
+              aria-expanded={isExpanded}
             >
               {isExpanded ? '▼' : '▶'}
             </button>
             <button
               onClick={handleClearAll}
-              className="text-red-500 hover:text-red-700 transition-colors text-sm"
+              className="px-2 py-1 rounded-md text-red-600 hover:text-red-700 hover:bg-red-50 transition-colors text-sm"
               title="Clear all history"
+              aria-label="Clear all history"
             >
               🗑️
             </button>
@@ -85,25 +85,23 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({ className = '' }) => {
                   {/* Header with timestamp and actions */}
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-2">
-                      <span className="text-xs text-gray-500">
-                        {formatTimestamp(item.timestamp)}
-                      </span>
-                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                        {item.userRole}
-                      </span>
+                      <span className="text-xs text-gray-500">{formatTimestamp(item.timestamp)}</span>
+                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{item.userRole}</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <button
                         onClick={() => handleRestoreTranslation(item)}
-                        className="text-blue-500 hover:text-blue-700 transition-colors text-sm"
+                        className="px-2 py-1 rounded-md text-blue-600 hover:text-blue-700 hover:bg-blue-50 transition-colors text-sm"
                         title="Restore this translation"
+                        aria-label="Restore this translation"
                       >
                         ↻
                       </button>
                       <button
                         onClick={() => handleDeleteItem(item.id)}
-                        className="text-red-500 hover:text-red-700 transition-colors text-sm"
+                        className="px-2 py-1 rounded-md text-red-600 hover:text-red-700 hover:bg-red-50 transition-colors text-sm"
                         title="Delete this item"
+                        aria-label="Delete this item"
                       >
                         ×
                       </button>
@@ -113,9 +111,7 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({ className = '' }) => {
                   {/* Original text preview */}
                   <div className="mb-2">
                     <p className="text-sm text-gray-600 line-clamp-2">
-                      "{item.originalText.length > 100 
-                        ? item.originalText.substring(0, 100) + '...' 
-                        : item.originalText}"
+                      "{item.originalText.length > 100 ? item.originalText.substring(0, 100) + '...' : item.originalText}"
                     </p>
                   </div>
 
@@ -136,12 +132,10 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({ className = '' }) => {
         {!isExpanded && (
           <div className="p-4">
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-600">
-                {history.length} translation{history.length !== 1 ? 's' : ''} saved
-              </div>
+              <div className="text-sm text-gray-600">{history.length} translation{history.length !== 1 ? 's' : ''} saved</div>
               <button
                 onClick={() => setIsExpanded(true)}
-                className="text-blue-500 hover:text-blue-700 transition-colors text-sm"
+                className="text-blue-600 hover:text-blue-700 hover:underline transition-colors text-sm"
               >
                 View all →
               </button>
