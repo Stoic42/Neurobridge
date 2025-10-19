@@ -43,54 +43,53 @@ const EmotionMeter: React.FC<EmotionMeterProps> = ({ result, className = '' }) =
       
       <div className="flex flex-col items-center space-y-4">
         {/* Circular meter */}
-        <div className="relative w-48 h-48">
+        <div className="relative w-52 h-52">
           {/* Background circle */}
-          <div className="absolute inset-0 rounded-full border-8 border-gray-200"></div>
+          <div className="absolute inset-0 rounded-full border-[10px] border-gray-200 shadow-inner" aria-hidden="true"></div>
           
           {/* Progress circle */}
-          <div 
-            className="absolute inset-0 rounded-full border-8 border-transparent"
+          <div
+            className="absolute inset-0 rounded-full border-[10px] border-transparent transition-all duration-500 ease-out"
             style={{
-              background: `conic-gradient(from 0deg, #3b82f6 0deg, #3b82f6 ${rotation}deg, #e5e7eb ${rotation}deg, #e5e7eb 360deg)`
+              background: `conic-gradient(from 0deg, ${emotionIntensity >= 80 ? '#ef4444' : emotionIntensity >= 60 ? '#f97316' : emotionIntensity >= 40 ? '#f59e0b' : emotionIntensity >= 20 ? '#22c55e' : '#3b82f6'} 0deg, ${emotionIntensity >= 80 ? '#ef4444' : emotionIntensity >= 60 ? '#f97316' : emotionIntensity >= 40 ? '#f59e0b' : emotionIntensity >= 20 ? '#22c55e' : '#3b82f6'} ${rotation}deg, #e5e7eb ${rotation}deg, #e5e7eb 360deg)`
             }}
+            aria-hidden="true"
           ></div>
           
           {/* Center content */}
-          <div className="absolute inset-4 bg-white rounded-full flex flex-col items-center justify-center">
+          <div className="absolute inset-5 bg-white rounded-full flex flex-col items-center justify-center shadow">
             <div className="text-3xl font-bold text-gray-800">{emotionIntensity}</div>
-            <div className="text-sm text-gray-600">intensity</div>
+            <div className="text-xs text-gray-500 tracking-wide">intensity</div>
           </div>
           
           {/* Needle */}
-          <div 
-            className="absolute top-2 left-1/2 w-1 h-20 bg-gray-800 origin-bottom transform -translate-x-1/2"
+          <div
+            className="absolute top-2 left-1/2 w-1 h-20 bg-gray-800 origin-bottom transform -translate-x-1/2 transition-transform duration-500 ease-out"
             style={{
               transform: `translateX(-50%) rotate(${rotation}deg)`,
               transformOrigin: 'bottom center'
             }}
+            aria-hidden="true"
           ></div>
         </div>
-
+      
         {/* Intensity label and description */}
         <div className="text-center">
-          <div className={`text-lg font-semibold ${getColor(emotionIntensity)}`}>
-            {getIntensityLabel(emotionIntensity)} Intensity
-          </div>
-          <div className={`mt-2 p-3 rounded-lg ${getBgColor(emotionIntensity)}`}>
-            <p className="text-sm text-gray-700">{emotionDescription}</p>
+          <div className={`text-lg font-semibold ${getColor(emotionIntensity)}`}>{getIntensityLabel(emotionIntensity)} Intensity</div>
+          <div className={`mt-3 p-3 rounded-xl border ${getBgColor(emotionIntensity)} border-opacity-60`}> 
+            <p className="text-sm text-gray-700 leading-relaxed">{emotionDescription}</p>
           </div>
         </div>
-
+      
         {/* Communication tips for high intensity */}
         {emotionIntensity > 70 && (
-          <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+          <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl shadow-sm">
             <div className="flex items-start space-x-2">
-              <span className="text-amber-600 text-lg">💡</span>
+              <span className="text-amber-600 text-lg" aria-hidden="true">💡</span>
               <div>
                 <h4 className="font-medium text-amber-800">Communication Tips</h4>
                 <p className="text-sm text-amber-700 mt-1">
-                  High emotional intensity detected. Consider taking a break, 
-                  using calming techniques, or communicating in a quieter environment.
+                  High emotional intensity detected. Consider taking a break, using calming techniques, or communicating in a quieter environment.
                 </p>
               </div>
             </div>
