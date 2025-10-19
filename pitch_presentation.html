@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroBridge - 神经多样性沟通桥梁</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css">
+    <style>
+        .reveal {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none;
+            font-weight: 700;
+        }
+        
+        .reveal .slides section {
+            text-align: left;
+        }
+        
+        .reveal .title-slide {
+            text-align: center;
+        }
+        
+        .reveal .problem-box {
+            background: rgba(255, 99, 71, 0.2);
+            border-left: 4px solid #ff6347;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .reveal .solution-box {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .reveal .demo-box {
+            background: rgba(33, 150, 243, 0.2);
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 0.8em;
+        }
+        
+        .reveal .demo-box .original {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .reveal .demo-box .translated {
+            color: #4caf50;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .reveal .highlight {
+            color: #ffa500;
+            font-weight: bold;
+        }
+        
+        .reveal .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .reveal .stat-item {
+            text-align: center;
+        }
+        
+        .reveal .stat-number {
+            font-size: 2em;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .reveal .use-case {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.2) 0%, rgba(33, 150, 243, 0.2) 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .reveal ul {
+            margin-left: 20px;
+        }
+        
+        .reveal li {
+            margin: 10px 0;
+        }
+        
+        .reveal .small-text {
+            font-size: 0.7em;
+            color: #aaa;
+        }
+        
+        .reveal .emphasis {
+            font-size: 1.3em;
+            color: #ffa500;
+            margin: 20px 0;
+        }
+        
+        .reveal .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .reveal .emoji {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- 封面 -->
+            <section class="title-slide">
+                <h1>🌉 NeuroBridge</h1>
+                <h3>神经多样性沟通桥梁</h3>
+                <p>让不同的大脑和平对话</p>
+                <p class="small-text">3分钟 Pitch · 2025</p>
+            </section>
+
+            <!-- 为什么做这个 -->
+            <section>
+                <h2>🤔 为什么是这个产品？</h2>
+                <div style="margin-top: 40px;">
+                    <p class="fragment">💊 ADHD产品太多了...</p>
+                    <p class="fragment highlight" style="font-size: 1.3em; margin: 30px 0;">谁来管管 ASD 了？</p>
+                    <p class="fragment">🔄 MBTI翻译器的想法很有趣</p>
+                    <p class="fragment" style="color: #4caf50; font-size: 1.2em;">→ 结合起来，做个真正有用的工具</p>
+                </div>
+            </section>
+
+            <!-- 问题是什么 -->
+            <section>
+                <h2>😤 真实的问题</h2>
+                <div class="problem-box">
+                    <p><strong>ASD人士真的很"烦人"吗？</strong></p>
+                    <ul>
+                        <li class="fragment">用常人的想法解读他们 → 误解重重</li>
+                        <li class="fragment">直白表达 → 被认为"没礼貌"</li>
+                        <li class="fragment">字面理解 → 被认为"不开窍"</li>
+                        <li class="fragment">重复询问 → 被认为"找茬"</li>
+                    </ul>
+                </div>
+                <p class="fragment emphasis">但他们能合作吗？能不"烦人"吗？</p>
+                <p class="fragment" style="color: #4caf50; font-size: 1.2em;">✅ 有办法！</p>
+            </section>
+
+            <!-- 解决方案 -->
+            <section>
+                <h2>💡 我们的解决方案</h2>
+                <div class="solution-box">
+                    <p><strong>NeuroBridge：AI驱动的沟通翻译器</strong></p>
+                    <ul>
+                        <li>🔄 <strong>双向翻译</strong>：ASD ↔ NT 沟通风格</li>
+                        <li>🎯 <strong>意图分析</strong>：TA到底想说什么？</li>
+                        <li>⚠️ <strong>误解预警</strong>：这样说可能会被误解</li>
+                        <li>🎚️ <strong>情绪强度计</strong>：可视化情感状态</li>
+                        <li>🎭 <strong>语气调节</strong>：直接/温和/共情</li>
+                    </ul>
+                </div>
+                <p class="fragment" style="text-align: center; margin-top: 20px;">
+                    让双方 <span class="highlight">live in more peace together</span>
+                </p>
+            </section>
+
+            <!-- ASD 知识科普 -->
+            <section>
+                <h2>📚 理解 ASD：述情障碍</h2>
+                <div style="margin-top: 30px;">
+                    <p><strong>Alexithymia（述情障碍）</strong></p>
+                    <p style="margin: 20px 0;">难以识别、描述和表达自己的情绪</p>
+                    <div class="grid-2" style="margin-top: 30px;">
+                        <div>
+                            <p class="small-text" style="color: #ff6347;">❌ 常见误解</p>
+                            <ul style="font-size: 0.9em;">
+                                <li>"TA不关心我的感受"</li>
+                                <li>"TA没有情绪"</li>
+                                <li>"TA太冷漠了"</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="small-text" style="color: #4caf50;">✅ 真实情况</p>
+                            <ul style="font-size: 0.9em;">
+                                <li>有情绪，但难以识别</li>
+                                <li>需要更直接的表达</li>
+                                <li>字面理解沟通内容</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 典型误解场景 -->
+            <section>
+                <h2>🎭 典型误解场景</h2>
+                <div class="demo-box">
+                    <p><strong>场景1：职场任务</strong></p>
+                    <p class="original">NT说："能帮忙看看这个吗？不急，有空再说。"</p>
+                    <p style="margin: 10px 0; color: #ff6347;">→ ASD理解：不急=可以不做 → 没做</p>
+                    <p class="translated">翻译后："这个需要你今天完成，优先级中等。"</p>
+                </div>
+                <div class="demo-box">
+                    <p><strong>场景2：社交邀请</strong></p>
+                    <p class="original">NT说："改天一起吃饭吧！"</p>
+                    <p style="margin: 10px 0; color: #ff6347;">→ ASD理解：等待具体时间 → 一直等</p>
+                    <p class="translated">翻译后："我想和你吃饭，方便的话请告诉我具体日期。"</p>
+                </div>
+            </section>
+
+            <!-- 案例：感官超载 -->
+            <section>
+                <h2>🔊 案例：感官超载</h2>
+                <div class="demo-box">
+                    <p class="original">ASD原文：</p>
+                    <p style="color: #ff9800; font-size: 1.1em;">"灯太亮了噪音太大了我受不了我要走了！"</p>
+                    <p style="margin: 15px 0; color: #aaa;">
+                        情绪强度: <span style="color: #ff6347; font-size: 1.3em;">90/100</span>
+                    </p>
+                    <p class="translated">翻译给NT：</p>
+                    <p style="color: #4caf50; font-size: 1em;">
+                        "我正在经历感官超载（灯光和声音刺激过强）。我需要立即转移到安静、光线柔和的环境。这不是针对任何人，而是我的神经系统对环境的生理反应。"
+                    </p>
+                </div>
+                <p class="fragment" style="margin-top: 20px; color: #ffa500;">
+                    → 从"情绪崩溃"到"清晰的需求表达"
+                </p>
+            </section>
+
+            <!-- 不仅仅是ASD -->
+            <section>
+                <h2>🌍 应用场景：远不止ASD</h2>
+                <div class="use-case fragment">
+                    <p><strong>🗣️ 地域文化差异</strong></p>
+                    <p style="font-size: 0.9em;">东北话："你瞅啥？" → 南方人："他在找事吗？"</p>
+                    <p style="color: #4caf50;">翻译：只是普通疑问，无敌意</p>
+                </div>
+                <div class="use-case fragment">
+                    <p><strong>💼 职场沟通风格</strong></p>
+                    <p style="font-size: 0.9em;">直接型 vs 委婉型</p>
+                </div>
+                <div class="use-case fragment">
+                    <p><strong>🌐 跨文化交流</strong></p>
+                    <p style="font-size: 0.9em;">高语境 vs 低语境文化</p>
+                </div>
+                <p class="fragment emphasis" style="text-align: center; margin-top: 30px;">
+                    课题分离：是什么就是什么，不过度解读
+                </p>
+            </section>
+
+            <!-- 产品演示 -->
+            <section>
+                <h2>🎯 产品核心功能</h2>
+                <div style="margin-top: 30px;">
+                    <div class="demo-box">
+                        <p><strong>实时翻译</strong></p>
+                        <p style="font-size: 0.9em;">输入文本 → 选择角色 → 获得翻译 + 意图分析</p>
+                    </div>
+                    <div class="demo-box">
+                        <p><strong>情绪仪表盘</strong></p>
+                        <p style="font-size: 0.9em;">0-100可视化情绪强度，帮助调节表达</p>
+                    </div>
+                    <div class="demo-box">
+                        <p><strong>历史记录</strong></p>
+                        <p style="font-size: 0.9em;">学习过往沟通模式，持续改进</p>
+                    </div>
+                </div>
+                <p class="fragment" style="text-align: center; margin-top: 20px; color: #4caf50;">
+                    🔒 隐私优先：本地处理，不上传敏感信息
+                </p>
+            </section>
+
+            <!-- 案例：工作场景 -->
+            <section>
+                <h2>💼 案例：工作任务分配</h2>
+                <div class="demo-box">
+                    <p class="original">NT原文：</p>
+                    <p style="color: #ff9800;">"明天的演示你能搞定吗？挺重要的。"</p>
+                    <hr style="margin: 15px 0; border-color: #555;">
+                    <p style="color: #ff6347;">⚠️ 潜在误解：</p>
+                    <ul style="font-size: 0.9em; margin: 10px 0;">
+                        <li>"能搞定吗" = 疑问句 = 可以拒绝？</li>
+                        <li>"挺重要" 有多重要？重要性等级？</li>
+                        <li>需要准备到什么程度？</li>
+                    </ul>
+                    <hr style="margin: 15px 0; border-color: #555;">
+                    <p class="translated">翻译给ASD：</p>
+                    <p style="color: #4caf50;">
+                        "明天10点团队会议需要你做演示。这是高优先级任务（重要性8/10）。请准备10分钟PPT，包含项目进度和下周计划。如有困难请在今天下午5点前告知。"
+                    </p>
+                </div>
+            </section>
+
+            <!-- 未来愿景 -->
+            <section>
+                <h2>🚀 未来计划</h2>
+                <ul style="font-size: 0.95em;">
+                    <li class="fragment">📖 <strong>科普内容</strong>：集成ASD知识库和教育资源</li>
+                    <li class="fragment">🎨 <strong>风格扩展</strong>：支持更多沟通风格（性格类型、代际差异等）</li>
+                    <li class="fragment">🤝 <strong>实时助手</strong>：会议/聊天实时提示</li>
+                    <li class="fragment">🧠 <strong>个性化学习</strong>：根据用户习惯优化翻译</li>
+                    <li class="fragment">🌏 <strong>社区共建</strong>：众包典型场景和最佳实践</li>
+                </ul>
+                <div class="fragment" style="margin-top: 40px; text-align: center;">
+                    <p class="emphasis">甚至可以做"阴阳怪气翻译器"</p>
+                    <p class="small-text">（但我们还是保持善良中立 😊）</p>
+                </div>
+            </section>
+
+            <!-- 研究支持 -->
+            <section>
+                <h2>📊 研究基础</h2>
+                <p style="margin-bottom: 20px;">基于权威神经多样性研究：</p>
+                <ul style="font-size: 0.85em;">
+                    <li>🔬 ASD社交技能训练的虚拟现实应用</li>
+                    <li>🧩 理论心智(Theory of Mind)与语用能力</li>
+                    <li>🎭 隐性情绪处理跨年龄组研究</li>
+                    <li>🤖 自动化社交技能评估反馈系统</li>
+                    <li>💬 共建话语与意义协商方法</li>
+                </ul>
+                <p class="fragment" style="margin-top: 30px; color: #4caf50; text-align: center;">
+                    → 不是"治疗"，而是<strong>"桥梁"</strong><br>
+                    → 不是"缺陷"，而是<strong>"差异"</strong>
+                </p>
+            </section>
+
+            <!-- 影响力 -->
+            <section>
+                <h2>💫 我们的愿景</h2>
+                <div style="margin-top: 50px;">
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">1-2%</div>
+                            <div class="small-text">全球人口有ASD</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="small-text">都需要更好的沟通</div>
+                        </div>
+                    </div>
+                    <p class="emphasis" style="text-align: center; margin-top: 50px;">
+                        让每种大脑都被理解<br>
+                        让每次对话都更顺畅<br>
+                        <span style="color: #4caf50;">让世界更和平 🕊️</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- 结束页 -->
+            <section class="title-slide">
+                <h1>🌉 NeuroBridge</h1>
+                <h3>因为理解，所以和平</h3>
+                <div style="margin-top: 60px;">
+                    <p>产品已上线 · 欢迎试用</p>
+                    <p class="small-text">github.com/yourproject/neurobridge</p>
+                </div>
+                <div style="margin-top: 60px;">
+                    <p style="font-size: 0.8em;">Q&A</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'fast',
+            backgroundTransition: 'fade',
+            controls: true,
+            progress: true,
+            center: true,
+            slideNumber: 'c/t',
+            keyboard: true,
+            overview: true,
+            touch: true,
+            loop: false,
+            rtl: false,
+            shuffle: false,
+            fragments: true,
+            fragmentInURL: false,
+            embedded: false,
+            help: true,
+            showNotes: false,
+            autoPlayMedia: null,
+            preloadIframes: null,
+            autoSlide: 0,
+            autoSlideStoppable: true,
+            mouseWheel: false,
+            hideInactiveCursor: true,
+            hideCursorTime: 5000,
+            previewLinks: false,
+            width: 1280,
+            height: 720,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+    </script>
+</body>
+</html>
+
