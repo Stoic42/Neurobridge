@@ -37,14 +37,24 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-3">
-                <div className="text-2xl">🌉</div>
+                <div className="text-2xl" aria-hidden="true">🌉</div>
                 <div>
                   <h1 className="text-xl font-bold text-gray-900">NeuroBridge</h1>
                   <p className="text-sm text-gray-600">AI Communication Bridge</p>
                 </div>
               </div>
-              <div className="text-sm text-gray-500">
-                Bridging ASD & NT Communication
+              <div className="flex items-center space-x-4">
+                <div className="text-sm text-gray-500">
+                  Bridging ASD & NT Communication
+                </div>
+                <button
+                  onClick={() => useAppStore.getState().setShowPrivacyNotice(true)}
+                  className="p-2 rounded-full hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                  aria-label="Open privacy and settings"
+                  title="Privacy & Settings"
+                >
+                  ⚙️
+                </button>
               </div>
             </div>
           </div>
@@ -65,6 +75,23 @@ function App() {
                 <InputCard />
               </div>
 
+              {/* Helpful Empty State */}
+              {!translationResult && !isLoading && (
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6" role="region" aria-label="Helpful tips">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-yellow-500" aria-hidden="true">💡</span>
+                    <h2 className="text-lg font-semibold text-gray-900">Tips & Examples</h2>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-2">Try typing a message and click "Translate". You can preview the intent as you type.</p>
+                  <ul className="mt-3 space-y-2 text-sm text-gray-700 list-disc list-inside">
+                    <li>ASD → NT: "I prefer written instructions because verbal ones are hard to follow."</li>
+                    <li>NT → ASD: "Lets meet at 3 PM. Ill send a bullet list of topics in advance."</li>
+                    <li>Uncertain: "Im not sure how to ask for more details without sounding demanding."</li>
+                  </ul>
+                  <p className="text-sm text-gray-600 mt-3">Use the tone tabs to see Direct, Gentle, and Empathetic versions. Your preferred tone will be remembered.</p>
+                </div>
+              )}
+
               {/* Results */}
               {translationResult && (
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
@@ -77,9 +104,9 @@ function App() {
 
               {/* Error Display */}
               {error && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4" role="alert" aria-live="polite">
                   <div className="flex items-center space-x-2">
-                    <span className="text-red-600 text-lg">⚠️</span>
+                    <span className="text-red-600 text-lg" aria-hidden="true">⚠️</span>
                     <div>
                       <h4 className="font-medium text-red-800">Error</h4>
                       <p className="text-sm text-red-700 mt-1">{error}</p>
@@ -90,10 +117,35 @@ function App() {
 
               {/* Loading State */}
               {isLoading && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-                    <span className="text-blue-800 font-medium">Processing your message...</span>
+                <div className="space-y-4" aria-busy="true" aria-live="polite">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
+                      <span className="text-blue-800 font-medium">Processing your message...</span>
+                    </div>
+                  </div>
+                  {/* Skeletons for translation result sections */}
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <div className="h-5 w-48 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                    <div className="mt-4 space-y-2">
+                      <div className="h-4 w-full bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                      <div className="h-4 w-5/6 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                      <div className="h-4 w-4/6 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <div className="h-5 w-56 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                    <div className="mt-4 space-y-2">
+                      <div className="h-4 w-full bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                      <div className="h-4 w-3/4 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <div className="h-5 w-40 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                    <div className="mt-4 space-y-2">
+                      <div className="h-4 w-full bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                      <div className="h-4 w-5/6 bg-gray-200 rounded animate-pulse" aria-hidden="true"></div>
+                    </div>
                   </div>
                 </div>
               )}

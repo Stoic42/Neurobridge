@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { AppState, UserRole, TranslationResult, TranslationHistory } from '../types/index.ts';
+import type { AppState, UserRole, TranslationResult, TranslationHistory, ToneType } from '../types/index.ts';
 
 interface AppStore extends AppState {
   // Actions
@@ -16,6 +16,7 @@ interface AppStore extends AppState {
   acceptPrivacy: () => void;
   setShowPrivacyNotice: (show: boolean) => void;
   clearAllData: () => void;
+  setPreferredTone: (tone: ToneType) => void;
 }
 
 export const useAppStore = create<AppStore>()(
@@ -30,6 +31,7 @@ export const useAppStore = create<AppStore>()(
       history: [],
       privacyAccepted: false,
       showPrivacyNotice: false,
+      preferredTone: undefined,
 
       // Actions
       setUserRole: (role) => set({ userRole: role }),
@@ -80,10 +82,13 @@ export const useAppStore = create<AppStore>()(
           error: null,
           privacyAccepted: false,
           showPrivacyNotice: false,
+          preferredTone: undefined,
         });
         // Clear localStorage
         localStorage.removeItem('neurobridge-storage');
       },
+
+      setPreferredTone: (tone) => set({ preferredTone: tone }),
     }),
     {
       name: 'neurobridge-storage',
@@ -91,6 +96,7 @@ export const useAppStore = create<AppStore>()(
         userRole: state.userRole,
         history: state.history,
         privacyAccepted: state.privacyAccepted,
+        preferredTone: state.preferredTone,
       }),
     }
   )

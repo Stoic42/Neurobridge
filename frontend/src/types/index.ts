@@ -49,6 +49,7 @@ export interface AppState {
   history: TranslationHistory[];
   privacyAccepted: boolean;
   showPrivacyNotice: boolean;
+  preferredTone?: ToneType; // remember user's preferred tone
 }
 
 export interface ApiResponse<T> {

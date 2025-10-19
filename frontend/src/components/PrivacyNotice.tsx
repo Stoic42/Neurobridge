@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAppStore } from '../store/useAppStore';
 
 interface PrivacyNoticeProps {
@@ -9,19 +9,34 @@ interface PrivacyNoticeProps {
 const PrivacyNotice: React.FC<PrivacyNoticeProps> = ({ className = '', showAsModal = false }) => {
   const [isExpanded, setIsExpanded] = useState(showAsModal);
   const { privacyAccepted, acceptPrivacy, clearAllData, setShowPrivacyNotice } = useAppStore();
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (showAsModal && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [showAsModal]);
 
   // Modal overlay for initial consent
   if (showAsModal) {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" aria-hidden={!showAsModal}>
+        <div
+          ref={modalRef}
+          className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="privacy-modal-title"
+          aria-describedby="privacy-modal-desc"
+          tabIndex={-1}
+        >
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">Welcome to NeuroBridge</h2>
-              <div className="text-3xl">🌉</div>
+              <h2 id="privacy-modal-title" className="text-2xl font-bold text-gray-900">Welcome to NeuroBridge</h2>
+              <div className="text-3xl" aria-hidden="true">🌉</div>
             </div>
 
-            <div className="mb-6">
+            <div id="privacy-modal-desc" className="mb-6">
               <p className="text-gray-700 mb-4">
                 Before you start using NeuroBridge, please review our privacy practices and medical disclaimer.
               </p>
@@ -33,12 +48,14 @@ const PrivacyNotice: React.FC<PrivacyNoticeProps> = ({ className = '', showAsMod
               <button
                 onClick={acceptPrivacy}
                 className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                aria-label="Accept privacy policy and start"
               >
                 I Accept - Start Using NeuroBridge
               </button>
               <button
                 onClick={() => setShowPrivacyNotice(false)}
                 className="flex-1 bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors"
+                aria-label="Close privacy notice"
               >
                 Not Now
               </button>
@@ -56,12 +73,14 @@ const PrivacyNotice: React.FC<PrivacyNoticeProps> = ({ className = '', showAsMod
           <h3 className="text-lg font-semibold text-gray-800">Privacy & Medical Notice</h3>
           <div className="flex items-center space-x-2">
             {privacyAccepted && (
-              <span className="text-green-600 text-sm font-medium">✓ Accepted</span>
+              <span className="text-green-600 text-sm font-medium" aria-live="polite">✓ Accepted</span>
             )}
             <button
               onClick={() => setIsExpanded(!isExpanded)}
               className="text-gray-500 hover:text-gray-700 transition-colors"
               title={isExpanded ? 'Collapse' : 'Expand'}
+              aria-expanded={isExpanded}
+              aria-controls="privacy-section"
             >
               {isExpanded ? '▼' : '▶'}
             </button>
@@ -69,7 +88,7 @@ const PrivacyNotice: React.FC<PrivacyNoticeProps> = ({ className = '', showAsMod
         </div>
 
         {isExpanded && (
-          <div className="space-y-4">
+          <div id="privacy-section" className="space-y-4">
             <PrivacyContent />
 
             {/* Data Management Controls */}
@@ -88,6 +107,7 @@ const PrivacyNotice: React.FC<PrivacyNoticeProps> = ({ className = '', showAsMod
                     <button
                       onClick={acceptPrivacy}
                       className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
+                      aria-label="Accept privacy policy"
                     >
                       Accept Privacy Policy
                     </button>
@@ -100,6 +120,7 @@ const PrivacyNotice: React.FC<PrivacyNoticeProps> = ({ className = '', showAsMod
                       }
                     }}
                     className="flex-1 bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700 transition-colors"
+                    aria-label="Clear all local data"
                   >
                     Clear All Data
                   </button>
@@ -151,35 +172,16 @@ const PrivacyContent: React.FC = () => (
     </div>
 
     {/* Data Usage */}
-    <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-      <h4 className="font-medium text-green-800 mb-2">📊 How We Use Your Data</h4>
-      <ul className="space-y-1 text-green-700">
-        <li>• Text is sent to AI services for translation processing only</li>
-        <li>• No data is used for AI model training or marketing purposes</li>
-        <li>• All processing is temporary and secure</li>
-        <li>• You maintain full control and ownership of your information</li>
-        <li>• Data is never shared with third parties</li>
+    <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+      <h4 className="font-medium text-gray-800 mb-2">📊 Data Usage</h4>
+      <ul className="space-y-1 text-gray-700">
+        <li>• We do not collect or share your personal data</li>
+        <li>• Your translations are not stored or analyzed by external services</li>
+        <li>• We strive to maintain your privacy and data security at all times</li>
       </ul>
-    </div>
-
-    {/* Local Storage Notice */}
-    <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-      <h4 className="font-medium text-purple-800 mb-2">💾 Local-First Data Storage</h4>
-      <ul className="space-y-1 text-purple-700">
-        <li>• Your preferences and history are stored locally in your browser</li>
-        <li>• Data never leaves your device except for AI processing</li>
-        <li>• Clearing browser data will remove all stored information</li>
-        <li>• No account creation or cloud storage required</li>
-      </ul>
-    </div>
-
-    {/* Contact Information */}
-    <div className="text-center pt-2 border-t border-gray-200">
-      <p className="text-xs text-gray-500">
-        Questions about privacy or accessibility? Contact us at privacy@neurobridge.ai
-      </p>
     </div>
   </div>
 );
 
 export default PrivacyNotice;
+

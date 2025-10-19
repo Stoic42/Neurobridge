@@ -45,6 +45,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",  # Frontend dev server (localhost)
         "http://127.0.0.1:5173",  # Frontend dev server (loopback alias)
+        "http://localhost:5174",  # Frontend dev server (alternate port)
+        "http://127.0.0.1:5174",  # Frontend dev server (alternate port loopback)
     ],
     allow_credentials=True,
     allow_methods=["*"],
