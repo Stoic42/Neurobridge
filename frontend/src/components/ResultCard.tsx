@@ -152,7 +152,7 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
         />
 
         {/* Improved Version */}
-        <div className="bg-white rounded-lg border border-gray-200 p-4" aria-live="polite">
+        <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm" aria-live="polite">
           <div className="flex items-center space-x-2 mb-3">
             <span className="text-xl" aria-hidden="true">✨</span>
             <h4 className="font-semibold text-gray-800">Improved Version</h4>
@@ -166,8 +166,6 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
             </button>
           </div>
           <p className="text-gray-700 leading-relaxed mb-4">{result.rewrite || 'No improved version available.'}</p>
-
-          {/* Reverse Translate Button */}
           <div className="flex justify-end mb-4">
             <button
               onClick={handleReverseTranslate}
@@ -177,8 +175,6 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
               🔄 Reverse Translate
             </button>
           </div>
-          
-          {/* Tone Adjustment Tabs */}
           <div className="border-t pt-4">
             <h5 className="font-medium text-gray-700 mb-3">Adjust Tone:</h5>
             <div role="tablist" aria-label="Tone options" className="flex flex-wrap gap-2">
@@ -190,8 +186,7 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
                   role="tab"
                   aria-selected={activeToneTab === tone}
                   className={`
-                    px-4 py-2 rounded-lg text-white text-sm font-medium transition-all
-                    ${activeToneTab === tone ? '' : ''}
+                    px-4 py-2 rounded-lg text-white text-sm font-medium transition-all shadow-sm
                     ${toneAdjustments[tone] ? 'opacity-75' : color}
                     ${adjustingTone === tone ? 'opacity-50 cursor-not-allowed' : ''}
                   `}
@@ -201,8 +196,6 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
                 </button>
               ))}
             </div>
-            
-            {/* Tone content panels */}
             <div className="mt-4">
               {toneButtons.map(({ tone, label }) => (
                 <div
@@ -210,7 +203,7 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
                   role="tabpanel"
                   aria-labelledby={`tone-${tone}`}
                   hidden={activeToneTab !== tone}
-                  className="mt-2 p-3 bg-gray-50 rounded-lg"
+                  className="mt-2 p-3 bg-gray-50 rounded-lg border border-gray-200"
                 >
                   {adjustingTone === tone && (
                     <div className="animate-pulse space-y-2" aria-busy="true">
@@ -245,7 +238,7 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
 
         {/* Communication Tips */}
         {result.communicationTips && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm">
             <div className="flex items-start space-x-2">
               <span className="text-blue-600 text-lg" aria-hidden="true">💡</span>
               <div>
