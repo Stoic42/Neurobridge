@@ -113,10 +113,10 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
   const isNearHardLimit = characterCount >= 1950 && characterCount <= 2000;
 
   return (
-    <div className={`input-card ${className}`}>
+    <div className={`input-card ${className} bg-white/70 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl p-6`}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="input-text" className="block text-sm font-semibold text-gray-700 mb-2">
+          <label htmlFor="input-text" className="block text-base font-semibold text-gray-800 mb-2 tracking-wide">
             Enter your message:
           </label>
           <textarea
@@ -133,8 +133,8 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
             }}
             placeholder="Type your message here... The AI will help translate it to be clearer for others to understand."
             className={`
-              w-full p-4 border-2 rounded-xl resize-none transition-colors shadow-sm
-              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+              w-full p-4 border-2 rounded-2xl resize-none transition-all shadow-md bg-white/80 backdrop-blur-sm
+              focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent hover:shadow-lg
               ${isOverLimit ? 'border-red-300 bg-red-50' : isNearHardLimit ? 'border-red-200 bg-red-50' : isApproachingLimit ? 'border-yellow-200 bg-yellow-50' : 'border-gray-300'}
               ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
             `}
@@ -171,10 +171,10 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
           type="submit"
           disabled={!inputText.trim() || isLoading || isOverLimit}
           className={`
-            w-full py-3 px-6 rounded-xl font-semibold transition-all duration-200 shadow-sm
+            w-full py-3.5 px-6 rounded-full font-semibold transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
             ${(!inputText.trim() || isLoading || isOverLimit)
               ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-              : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md active:scale-95'
+              : 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 hover:shadow-lg active:scale-95 shadow-indigo-500/30'
             }
           `}
           aria-label="Translate message"
@@ -191,7 +191,7 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
 
         {/* Live Intent Preview */}
         <div className="mt-4">
-          <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 p-4 shadow-md">
             <div className="flex items-center space-x-2 mb-2">
               <span className="text-xl">🔎</span>
               <h4 className="font-semibold text-gray-800">Intent Preview</h4>
