@@ -27,7 +27,7 @@ function App() {
   return (
     <ErrorBoundary>
       {/* Privacy Consent Modal */}
-      {showPrivacyNotice && !privacyAccepted && (
+      {showPrivacyNotice && (
         <PrivacyNotice showAsModal={true} />
       )}
       
@@ -64,18 +64,18 @@ function App() {
             {/* Left Column - Input Section */}
             <div className="lg:col-span-2 space-y-6">
               {/* Role Selection */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div className="bg-transparent p-0 border-0 shadow-none">
                 <RoleSelector />
               </div>
 
               {/* Text Input */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div className="bg-transparent p-0 border-0 shadow-none">
                 <InputCard />
               </div>
 
               {/* Helpful Empty State */}
               {!translationResult && !isLoading && (
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6" role="region" aria-label="Helpful tips">
+                <div className="bg-white/70 backdrop-blur-md rounded-2xl border border-white/40 p-6 shadow-xl" role="region" aria-label="Helpful tips">
                   <div className="flex items-center space-x-2">
                     <span className="text-yellow-500" aria-hidden="true">💡</span>
                     <h2 className="text-lg font-semibold text-gray-900">Tips & Examples</h2>
@@ -92,7 +92,7 @@ function App() {
 
               {/* Results */}
               {translationResult && (
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div className="bg-transparent p-0 border-0 shadow-none">
                   <ResultCard 
                     result={translationResult} 
                     originalText={useAppStore.getState().inputText}
@@ -153,18 +153,18 @@ function App() {
             <div className="space-y-6">
               {/* Emotion Meter */}
               {translationResult && (
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div className="bg-transparent p-0 border-0 shadow-none">
                   <EmotionMeter result={translationResult} />
                 </div>
               )}
 
               {/* History Panel */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <div className="bg-transparent p-0 border-0 shadow-none">
                 <HistoryPanel />
               </div>
 
               {/* Privacy Notice */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+              <div className="bg-transparent p-0 border-0 shadow-none">
                 <PrivacyNotice />
               </div>
             </div>

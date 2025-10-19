@@ -160,7 +160,7 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
         </div>
 
         {(localError || error) && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-lg" role="alert" aria-live="polite">
+          <div className="p-4 bg-red-50/90 backdrop-blur-sm border border-red-200 rounded-2xl shadow-md" role="alert" aria-live="polite">
             <p className="text-sm text-red-800">
               {localError || error}
             </p>
