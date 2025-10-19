@@ -116,7 +116,7 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
     <div className={`input-card ${className}`}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="input-text" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="input-text" className="block text-sm font-semibold text-gray-700 mb-2">
             Enter your message:
           </label>
           <textarea
@@ -133,35 +133,28 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
             }}
             placeholder="Type your message here... The AI will help translate it to be clearer for others to understand."
             className={`
-              w-full p-4 border-2 rounded-lg resize-none transition-colors
+              w-full p-4 border-2 rounded-xl resize-none transition-colors shadow-sm
               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
               ${isOverLimit ? 'border-red-300 bg-red-50' : isNearHardLimit ? 'border-red-200 bg-red-50' : isApproachingLimit ? 'border-yellow-200 bg-yellow-50' : 'border-gray-300'}
               ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
             `}
-            rows={4}
+            rows={5}
             disabled={isLoading}
             maxLength={2000}
             aria-label="Message input"
           />
-          
           <div className="flex justify-between items-center mt-2">
-            <div className={`text-sm ${isOverLimit ? 'text-red-600' : isNearHardLimit ? 'text-red-600' : isApproachingLimit ? 'text-yellow-600' : 'text-gray-500'}`}>
+            <div className={`text-xs ${isOverLimit ? 'text-red-600' : isNearHardLimit ? 'text-red-600' : isApproachingLimit ? 'text-yellow-600' : 'text-gray-500'}`}>
               {characterCount}/2000 characters
             </div>
             {isApproachingLimit && !isOverLimit && (
-              <div className="text-xs text-yellow-700 font-medium">
-                Approaching the limit
-              </div>
+              <div className="text-xs text-yellow-700 font-medium">Approaching the limit</div>
             )}
             {isNearHardLimit && (
-              <div className="text-xs text-red-700 font-medium">
-                Near the maximum limit
-              </div>
+              <div className="text-xs text-red-700 font-medium">Near the maximum limit</div>
             )}
             {isOverLimit && (
-              <div className="text-sm text-red-600 font-medium">
-                Text is too long!
-              </div>
+              <div className="text-xs text-red-600 font-semibold">Text is too long!</div>
             )}
           </div>
         </div>
@@ -178,9 +171,9 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
           type="submit"
           disabled={!inputText.trim() || isLoading || isOverLimit}
           className={`
-            w-full py-3 px-6 rounded-lg font-medium transition-all duration-200
+            w-full py-3 px-6 rounded-xl font-semibold transition-all duration-200 shadow-sm
             ${(!inputText.trim() || isLoading || isOverLimit)
-              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
               : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md active:scale-95'
             }
           `}
@@ -198,7 +191,7 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
 
         {/* Live Intent Preview */}
         <div className="mt-4">
-          <div className="bg-white rounded-lg border border-gray-200 p-4">
+          <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
             <div className="flex items-center space-x-2 mb-2">
               <span className="text-xl">🔎</span>
               <h4 className="font-semibold text-gray-800">Intent Preview</h4>
