@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import structlog
+from dotenv import load_dotenv
+load_dotenv()
 from app.api.endpoints import router as api_router
 
 # Configure structured logging
@@ -40,7 +42,10 @@ app = FastAPI(
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Frontend dev server
+    allow_origins=[
+        "http://localhost:5173",  # Frontend dev server (localhost)
+        "http://127.0.0.1:5173",  # Frontend dev server (loopback alias)
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

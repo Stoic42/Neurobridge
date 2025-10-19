@@ -1,6 +1,8 @@
 import asyncio
 from typing import List, Optional
 from app.adapters.base import LLMAdapter
+from app.adapters.qwen import QwenAdapter
+from app.adapters.xai import XAIAdapter
 from app.adapters.wenxin import WenxinAdapter
 from app.adapters.gpt import GPTAdapter
 from app.models.schemas import TranslationRequest, TranslationResult, ToneAdjustmentRequest, ToneAdjustmentResult
@@ -13,7 +15,9 @@ class LLMService:
     
     def __init__(self):
         self.adapters: List[LLMAdapter] = [
-            WenxinAdapter(),  # Primary adapter
+            QwenAdapter(),    # Primary adapter
+            XAIAdapter(),     # Secondary adapter
+            WenxinAdapter(),  # Tertiary adapter
             GPTAdapter(),     # Fallback adapter
         ]
         self.current_adapter: Optional[LLMAdapter] = None
