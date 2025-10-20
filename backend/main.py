@@ -50,6 +50,8 @@ app.add_middleware(
         "http://localhost:5175",  # Frontend dev server (alternate port 2)
         "http://127.0.0.1:5175",  # Frontend dev server (alternate port 2 loopback)
         "http://192.168.43.5:5175",  # Frontend dev server (network IP)
+        "http://192.168.43.5:5174",  # Frontend dev server (network IP alt port)
+        "http://192.168.43.5:5173",  # Frontend dev server (network IP default port)
     ],
     allow_credentials=True,
     allow_methods=["*"],

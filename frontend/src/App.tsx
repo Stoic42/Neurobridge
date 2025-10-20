@@ -7,6 +7,7 @@ import EmotionMeter from './components/EmotionMeter';
 import HistoryPanel from './components/HistoryPanel';
 import PrivacyNotice from './components/PrivacyNotice';
 import ErrorBoundary from './components/ErrorBoundary';
+import './App.css';
 
 function App() {
   const { 

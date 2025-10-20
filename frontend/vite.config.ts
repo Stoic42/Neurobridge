@@ -7,6 +7,7 @@ export default defineConfig({
   // Dev server settings to ensure predictable port/host
   server: {
     port: 5173,
+    strictPort: true,
     host: true,
     open: false,
   },
