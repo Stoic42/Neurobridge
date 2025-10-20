@@ -71,10 +71,10 @@ const PrivacyNotice: React.FC<PrivacyNoticeProps> = ({ className = '', showAsMod
   }
 
   return (
-    <div className={`privacy-notice ${className}`}>
-      <div className="p-4">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-lg font-semibold text-gray-800">Privacy & Medical Notice</h3>
+    <div className={`privacy-notice ${className} bg-white border border-neutral-200 rounded-xl`}>
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-[17px] font-semibold text-neutral-800">Privacy & Medical Notice</h3>
           <div className="flex items-center space-x-2">
             {privacyAccepted && (
               <span className="text-green-600 text-sm font-medium" aria-live="polite">✓ Accepted</span>

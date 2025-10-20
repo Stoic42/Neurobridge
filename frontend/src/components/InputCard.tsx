@@ -21,10 +21,8 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
   } = useAppStore();
 
   const [localError, setLocalError] = useState<string | null>(null);
-  // Live preview states
   const [previewIntent, setPreviewIntent] = useState<string | null>(null);
   const [isPreviewLoading, setIsPreviewLoading] = useState(false);
-  const [previewError, setPreviewError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent | KeyboardEvent) => {
     if (e && 'preventDefault' in e) {
@@ -46,7 +44,6 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
     setLoading(true);
 
     try {
-      // Determine target role (opposite of user role)
       const targetRole = userRole === 'ASD' ? 'NT' : userRole === 'NT' ? 'ASD' : 'NT';
       
       const result = await ApiService.translate({
@@ -73,7 +70,6 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
 
   // Debounced live intent preview
   useEffect(() => {
-    setPreviewError(null);
     setPreviewIntent(null);
 
     const text = inputText.trim();
@@ -82,7 +78,6 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
       return;
     }
 
-    const controller = new AbortController();
     setIsPreviewLoading(true);
     const timer = setTimeout(async () => {
       try {
@@ -93,31 +88,25 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
           targetRole
         });
         setPreviewIntent(result.intent);
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : 'Preview failed';
-        setPreviewError(msg);
+      } catch {
+        // Silently fail for preview
       } finally {
         setIsPreviewLoading(false);
       }
-    }, 800);
+    }, 1000);
 
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
+    return () => clearTimeout(timer);
   }, [inputText, userRole]);
 
   const characterCount = inputText.length;
   const isOverLimit = characterCount > 2000;
-  const isApproachingLimit = characterCount >= 1800 && characterCount < 1950;
-  const isNearHardLimit = characterCount >= 1950 && characterCount <= 2000;
 
   return (
-    <div className={`input-card ${className} bg-white/70 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl p-6`}>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className={`input-card ${className} bg-white border border-neutral-200 rounded-2xl shadow-lg p-8`}>
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label htmlFor="input-text" className="block text-base font-semibold text-gray-800 mb-2 tracking-wide">
-            Enter your message:
+          <label htmlFor="input-text" className="block text-[17px] font-semibold text-neutral-800 mb-3">
+            Enter your message
           </label>
           <textarea
             id="input-text"
@@ -133,35 +122,30 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
             }}
             placeholder="Type your message here... The AI will help translate it to be clearer for others to understand."
             className={`
-              w-full p-4 border-2 rounded-2xl resize-none transition-all shadow-md bg-white/80 backdrop-blur-sm
-              focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent hover:shadow-lg
-              ${isOverLimit ? 'border-red-300 bg-red-50' : isNearHardLimit ? 'border-red-200 bg-red-50' : isApproachingLimit ? 'border-yellow-200 bg-yellow-50' : 'border-gray-300'}
-              ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
+              w-full p-4 border-2 rounded-xl resize-none transition-all bg-neutral-50
+              focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 focus:bg-white
+              ${isOverLimit ? 'border-red-300 bg-red-50' : 'border-neutral-200'}
+              ${isLoading ? 'opacity-60 cursor-not-allowed' : 'hover:border-neutral-300'}
+              text-[15px] text-neutral-700 placeholder:text-neutral-400
             `}
-            rows={5}
+            rows={6}
             disabled={isLoading}
             maxLength={2000}
             aria-label="Message input"
           />
-          <div className="flex justify-between items-center mt-2">
-            <div className={`text-xs ${isOverLimit ? 'text-red-600' : isNearHardLimit ? 'text-red-600' : isApproachingLimit ? 'text-yellow-600' : 'text-gray-500'}`}>
+          <div className="flex justify-between items-center mt-2 px-1">
+            <div className={`text-[13px] ${isOverLimit ? 'text-red-600 font-medium' : 'text-neutral-500'}`}>
               {characterCount}/2000 characters
             </div>
-            {isApproachingLimit && !isOverLimit && (
-              <div className="text-xs text-yellow-700 font-medium">Approaching the limit</div>
-            )}
-            {isNearHardLimit && (
-              <div className="text-xs text-red-700 font-medium">Near the maximum limit</div>
-            )}
             {isOverLimit && (
-              <div className="text-xs text-red-600 font-semibold">Text is too long!</div>
+              <div className="text-[13px] text-red-600 font-medium">Text is too long!</div>
             )}
           </div>
         </div>
 
         {(localError || error) && (
-          <div className="p-4 bg-red-50/90 backdrop-blur-sm border border-red-200 rounded-2xl shadow-md" role="alert" aria-live="polite">
-            <p className="text-sm text-red-800">
+          <div className="p-4 bg-red-50 border border-red-200 rounded-xl" role="alert" aria-live="polite">
+            <p className="text-[14px] text-red-700">
               {localError || error}
             </p>
           </div>
@@ -171,16 +155,17 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
           type="submit"
           disabled={!inputText.trim() || isLoading || isOverLimit}
           className={`
-            w-full py-3.5 px-6 rounded-full font-semibold transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+            w-full py-3.5 px-6 rounded-xl font-semibold text-[15px] transition-all duration-200 
+            focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2
             ${(!inputText.trim() || isLoading || isOverLimit)
-              ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-              : 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 hover:shadow-lg active:scale-95 shadow-indigo-500/30'
+              ? 'bg-neutral-200 text-neutral-500 cursor-not-allowed'
+              : 'bg-primary-500 text-white hover:bg-primary-600 shadow-sm hover:shadow-md active:scale-98'
             }
           `}
           aria-label="Translate message"
         >
           {isLoading ? (
-            <div className="flex items-center justify-center space-x-2" aria-busy="true" aria-live="polite">
+            <div className="flex items-center justify-center gap-2" aria-busy="true" aria-live="polite">
               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
               <span>Translating...</span>
             </div>
@@ -190,28 +175,23 @@ const InputCard: React.FC<InputCardProps> = ({ className = '' }) => {
         </button>
 
         {/* Live Intent Preview */}
-        <div className="mt-4">
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 p-4 shadow-md">
-            <div className="flex items-center space-x-2 mb-2">
-              <span className="text-xl">🔎</span>
-              <h4 className="font-semibold text-gray-800">Intent Preview</h4>
-            </div>
-            {isPreviewLoading && (
-              <div className="animate-pulse space-y-2" aria-busy="true">
-                <div className="h-4 bg-gray-200 rounded"></div>
-                <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-              </div>
-            )}
-            {!isPreviewLoading && previewIntent && (
-              <p className="text-gray-700 text-sm" aria-live="polite">{previewIntent}</p>
-            )}
-            {!isPreviewLoading && !previewIntent && !previewError && (
-              <p className="text-gray-500 text-sm">Start typing to see a preview of your message's intent.</p>
-            )}
-            {previewError && (
-              <p className="text-red-700 text-sm">{previewError}</p>
-            )}
+        <div className="bg-neutral-50 rounded-xl border border-neutral-200 p-5">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-lg">🔎</span>
+            <h4 className="font-semibold text-neutral-800 text-[15px]">Intent Preview</h4>
           </div>
+          {isPreviewLoading && (
+            <div className="animate-pulse space-y-2" aria-busy="true">
+              <div className="h-3 bg-neutral-200 rounded"></div>
+              <div className="h-3 bg-neutral-200 rounded w-5/6"></div>
+            </div>
+          )}
+          {!isPreviewLoading && previewIntent && (
+            <p className="text-neutral-700 text-[14px] leading-relaxed" aria-live="polite">{previewIntent}</p>
+          )}
+          {!isPreviewLoading && !previewIntent && (
+            <p className="text-neutral-500 text-[14px]">Start typing to see a preview of your message's intent.</p>
+          )}
         </div>
       </form>
     </div>

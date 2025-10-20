@@ -9,67 +9,70 @@ interface RoleSelectorProps {
 const RoleSelector: React.FC<RoleSelectorProps> = ({ className = '' }) => {
   const { userRole, setUserRole } = useAppStore();
 
-  const roles: { value: UserRole; label: string; description: string; icon: string }[] = [
+  const roles: { 
+    value: UserRole; 
+    label: string; 
+    icon: string;
+    color: string;
+    activeColor: string;
+    bgColor: string;
+  }[] = [
     {
       value: 'ASD',
       label: 'ASD',
-      description: 'Autism Spectrum Disorder',
-      icon: '🧩'
+      icon: '🧩',
+      color: 'text-primary-600',
+      activeColor: 'bg-primary-200 border-primary-400',
+      bgColor: 'hover:bg-primary-50'
     },
     {
       value: 'NT',
       label: 'NT',
-      description: 'Neurotypical',
-      icon: '🧠'
+      icon: '🧠',
+      color: 'text-accent-600',
+      activeColor: 'bg-accent-200 border-accent-400',
+      bgColor: 'hover:bg-accent-50'
     },
     {
       value: 'UNCERTAIN',
       label: 'Uncertain',
-      description: 'Not sure',
-      icon: '❓'
+      icon: '❓',
+      color: 'text-neutral-600',
+      activeColor: 'bg-neutral-200 border-neutral-400',
+      bgColor: 'hover:bg-neutral-100'
     }
   ];
 
   return (
-    <div className={`role-selector ${className} bg-white/70 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl p-6`}>
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">I identify as:</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className={`role-selector ${className}`}>
+      <div className="flex items-center justify-center gap-4">
         {roles.map((role) => (
           <button
             key={role.value}
             onClick={() => setUserRole(role.value)}
             className={`
-              p-5 rounded-2xl border-2 transition-all duration-200 text-left bg-white/70 backdrop-blur-sm shadow-md border-white/40
-              hover:shadow-lg hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
+              group relative flex flex-col items-center gap-2 px-6 py-4 rounded-2xl border-2 
+              transition-all duration-200 min-w-[120px]
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2
               ${userRole === role.value
-                ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-300'
-                : 'hover:bg-white/80'
+                ? `${role.activeColor} shadow-md scale-105`
+                : `bg-white border-neutral-200 ${role.bgColor} hover:shadow-sm hover:scale-102`
               }
             `}
             aria-pressed={userRole === role.value}
-            aria-label={`Select role ${role.label}`}
+            aria-label={`Select identity: ${role.label}`}
           >
-            <div className="flex items-center space-x-3">
-              <span className="text-2xl" aria-hidden="true">{role.icon}</span>
-              <div>
-                <div className="font-semibold text-gray-800">{role.label}</div>
-                <div className="text-sm text-gray-600">{role.description}</div>
-              </div>
-            </div>
+            <span className="text-3xl" aria-hidden="true">{role.icon}</span>
+            <span className={`text-sm font-semibold ${userRole === role.value ? role.color : 'text-neutral-700'}`}>
+              {role.label}
+            </span>
             {userRole === role.value && (
-              <div className="mt-2 text-sm text-blue-600 font-medium">
-                ✓ Selected
+              <div className="absolute -top-1 -right-1 w-5 h-5 bg-accent-500 rounded-full flex items-center justify-center">
+                <span className="text-white text-xs">✓</span>
               </div>
             )}
           </button>
         ))}
-      </div>
-      
-      <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200 shadow-md">
-        <p className="text-sm text-blue-800">
-          <strong>Note:</strong> This helps the AI understand your communication style 
-          and provide more accurate translations. You can change this anytime.
-        </p>
       </div>
     </div>
   );

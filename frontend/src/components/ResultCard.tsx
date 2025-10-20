@@ -93,20 +93,20 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
     content, 
     icon 
   }) => (
-    <div className="bg-white/70 backdrop-blur-md rounded-2xl border border-white/40 p-5 shadow-xl" aria-live="polite">
-      <div className="flex items-center space-x-2 mb-3">
-        <span className="text-xl" aria-hidden="true">{icon}</span>
-        <h4 className="font-semibold text-gray-800">{title}</h4>
+    <div className="bg-white border border-neutral-200 rounded-xl p-5 shadow-sm" aria-live="polite">
+      <div className="flex items-center gap-2 mb-3">
+        <span className="text-lg" aria-hidden="true">{icon}</span>
+        <h4 className="font-semibold text-neutral-800 text-[15px]">{title}</h4>
         <button
           onClick={() => copyToClipboard(content)}
-          className="ml-auto text-gray-500 hover:text-gray-700 transition-colors hover:underline"
+          className="ml-auto text-neutral-500 hover:text-neutral-700 transition-colors p-1.5 hover:bg-neutral-100 rounded-lg"
           title="Copy to clipboard"
           aria-label={`Copy ${title} text to clipboard`}
         >
           📋
         </button>
       </div>
-      <p className="text-gray-700 leading-relaxed">{content && content.trim() ? content : 'No analysis available yet.'}</p>
+      <p className="text-neutral-700 text-[15px] leading-relaxed">{content && content.trim() ? content : 'No analysis available yet.'}</p>
     </div>
   );
 
@@ -133,9 +133,9 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
   };
 
   return (
-    <div className={`result-card ${className}`}>
-      <h3 className="text-xl font-bold text-gray-800 mb-6">Translation Results</h3>
-      
+    <div className={`result-card ${className} bg-white border border-neutral-200 rounded-2xl shadow-lg p-8`}>
+      <h3 className="text-[20px] font-semibold text-neutral-800 mb-6">Translation Results</h3>
+
       <div className="space-y-6">
         {/* Intent Analysis */}
         <ResultSection
@@ -152,33 +152,33 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
         />
 
         {/* Improved Version */}
-          <div className="bg-white/70 backdrop-blur-md rounded-2xl border border-white/40 p-5 shadow-xl" aria-live="polite">
-          <div className="flex items-center space-x-2 mb-3">
-            <span className="text-xl" aria-hidden="true">✨</span>
-            <h4 className="font-semibold text-gray-800">Improved Version</h4>
+          <div className="bg-accent-50 border border-accent-200 rounded-xl p-5 shadow-sm" aria-live="polite">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-lg" aria-hidden="true">✨</span>
+            <h4 className="font-semibold text-neutral-800 text-[15px]">Improved Version</h4>
             <button
               onClick={() => copyToClipboard(result.rewrite)}
-              className="ml-auto text-gray-500 hover:text-gray-700 transition-colors hover:underline"
+              className="ml-auto text-neutral-500 hover:text-neutral-700 transition-colors p-1.5 hover:bg-white rounded-lg"
               title="Copy to clipboard"
               aria-label="Copy improved version to clipboard"
             >
               📋
             </button>
           </div>
-          <p className="text-gray-700 leading-relaxed mb-4">{result.rewrite || 'No improved version available.'}</p>
+          <p className="text-neutral-700 text-[15px] leading-relaxed mb-4">{result.rewrite || 'No improved version available.'}</p>
           <div className="flex justify-end mb-4">
             <button
               onClick={handleReverseTranslate}
-              className="px-3 py-2 rounded-full text-sm font-medium bg-gray-100 hover:bg-gray-200 text-gray-800 transition-colors shadow-md"
+              className="px-4 py-2 rounded-lg text-[14px] font-medium bg-white border border-neutral-200 hover:bg-neutral-50 text-neutral-700 transition-colors"
               aria-label="Reverse translate the improved text back"
             >
               🔄 Reverse Translate
             </button>
           </div>
-            <div className="border-t pt-4">
-            <h5 className="font-medium text-gray-700 mb-3">Adjust Tone:</h5>
+            <div className="border-t border-accent-200 pt-4 mt-4">
+            <h5 className="font-medium text-neutral-700 text-[15px] mb-3">Adjust Tone:</h5>
             <div role="tablist" aria-label="Tone options" className="flex flex-wrap gap-2">
-              {toneButtons.map(({ tone, label, description, color, icon }) => (
+              {toneButtons.map(({ tone, label, description: _description, color, icon }) => (
                 <button
                   key={tone}
                   onClick={() => handleToneAdjustment(tone)}
@@ -203,7 +203,7 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
                   role="tabpanel"
                   aria-labelledby={`tone-${tone}`}
                   hidden={activeToneTab !== tone}
-                  className="mt-2 p-4 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 shadow-md"
+                  className="mt-3 p-4 bg-white border border-neutral-200 rounded-xl"
                 >
                   {adjustingTone === tone && (
                     <div className="animate-pulse space-y-2" aria-busy="true">
@@ -238,12 +238,12 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className
 
         {/* Communication Tips */}
         {result.communicationTips && (
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-4 shadow-md">
-            <div className="flex items-start space-x-2">
-              <span className="text-blue-600 text-lg" aria-hidden="true">💡</span>
+          <div className="bg-primary-50 border border-primary-200 rounded-xl p-5">
+            <div className="flex items-start gap-3">
+              <span className="text-primary-600 text-lg flex-shrink-0" aria-hidden="true">💡</span>
               <div>
-                <h4 className="font-medium text-blue-800">Communication Tips</h4>
-                <p className="text-sm text-blue-700 mt-1 leading-relaxed">{result.communicationTips}</p>
+                <h4 className="font-semibold text-primary-800 text-[15px]">Communication Tips</h4>
+                <p className="text-[14px] text-primary-700 mt-1.5 leading-relaxed">{result.communicationTips}</p>
               </div>
             </div>
           </div>

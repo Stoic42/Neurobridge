@@ -38,8 +38,8 @@ const EmotionMeter: React.FC<EmotionMeterProps> = ({ result, className = '' }) =
   const rotation = (emotionIntensity / 100) * 180;
 
   return (
-    <div className={`emotion-meter ${className} bg-white/70 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl p-6`}>
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">Emotional Intensity</h3>
+    <div className={`emotion-meter ${className} bg-white border border-neutral-200 rounded-2xl shadow-sm p-6`}>
+      <h3 className="text-[17px] font-semibold text-neutral-800 mb-5">Emotional Intensity</h3>
       
       <div className="flex flex-col items-center space-y-4">
         {/* Circular meter */}
@@ -47,49 +47,58 @@ const EmotionMeter: React.FC<EmotionMeterProps> = ({ result, className = '' }) =
           {/* Background circle */}
           <div className="absolute inset-0 rounded-full border-[10px] border-gray-200 shadow-inner" aria-hidden="true"></div>
           
-          {/* Progress circle */}
+          {/* Progress circle - using semi-circle */}
            <div
-            className="absolute inset-0 rounded-full border-[10px] border-transparent transition-all duration-500 ease-out"
-             style={{
-               background: `conic-gradient(from 0deg, ${emotionIntensity >= 80 ? '#ef4444' : emotionIntensity >= 60 ? '#f97316' : emotionIntensity >= 40 ? '#f59e0b' : emotionIntensity >= 20 ? '#22c55e' : '#3b82f6'} 0deg, ${emotionIntensity >= 80 ? '#ef4444' : emotionIntensity >= 60 ? '#f97316' : emotionIntensity >= 40 ? '#f59e0b' : emotionIntensity >= 20 ? '#22c55e' : '#3b82f6'} ${rotation}deg, #e5e7eb ${rotation}deg, #e5e7eb 360deg)`
-             }}
+            className="absolute inset-0 rounded-full transition-all duration-500 ease-out overflow-hidden"
              aria-hidden="true"
-           ></div>
+           >
+             <div
+               className="absolute inset-0"
+               style={{
+                 background: `conic-gradient(from -90deg, ${emotionIntensity >= 80 ? '#ef4444' : emotionIntensity >= 60 ? '#f97316' : emotionIntensity >= 40 ? '#f59e0b' : emotionIntensity >= 20 ? '#22c55e' : '#3b82f6'} 0deg, ${emotionIntensity >= 80 ? '#ef4444' : emotionIntensity >= 60 ? '#f97316' : emotionIntensity >= 40 ? '#f59e0b' : emotionIntensity >= 20 ? '#22c55e' : '#3b82f6'} ${rotation}deg, transparent ${rotation}deg)`,
+                 clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'
+               }}
+             ></div>
+           </div>
           
           {/* Center content */}
-          <div className="absolute inset-5 bg-white/80 backdrop-blur-sm rounded-full flex flex-col items-center justify-center shadow-md">
-            <div className="text-3xl font-bold text-gray-800">{emotionIntensity}</div>
-            <div className="text-xs text-gray-500 tracking-wide">intensity</div>
+          <div className="absolute inset-[20px] bg-white/90 backdrop-blur-sm rounded-full flex flex-col items-center justify-center shadow-lg z-10">
+            <div className="text-4xl font-bold text-gray-800">{emotionIntensity}</div>
+            <div className="text-xs text-gray-500 tracking-wide uppercase">intensity</div>
           </div>
           
-          {/* Needle */}
+          {/* Needle - positioned at center */}
            <div
-            className="absolute top-2 left-1/2 w-1 h-20 bg-gray-800 origin-bottom transform -translate-x-1/2 transition-transform duration-500 ease-out"
+            className="absolute top-1/2 left-1/2 w-1 h-24 bg-gray-800 rounded-full transition-transform duration-500 ease-out"
              style={{
-               transform: `translateX(-50%) rotate(${rotation}deg)`,
+               transform: `translate(-50%, -100%) rotate(${rotation - 90}deg)`,
                transformOrigin: 'bottom center'
              }}
              aria-hidden="true"
-           ></div>
+           >
+             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-800 rounded-full"></div>
+           </div>
         </div>
       
         {/* Intensity label and description */}
-        <div className="text-center">
-          <div className={`inline-flex items-center px-3 py-1 rounded-full border border-white/40 bg-white/60 backdrop-blur-sm shadow-md text-sm font-semibold ${getColor(emotionIntensity)}`}>{getIntensityLabel(emotionIntensity)} Intensity</div>
-          <div className={`mt-3 p-4 rounded-2xl border ${getBgColor(emotionIntensity)} border-opacity-60 shadow-md`}> 
-            <p className="text-sm text-gray-700 leading-relaxed">{emotionDescription}</p>
+        <div className="text-center w-full">
+          <div className={`inline-flex items-center px-4 py-2 rounded-lg border border-neutral-200 bg-white text-[14px] font-semibold ${getColor(emotionIntensity)}`}>
+            {getIntensityLabel(emotionIntensity)} Intensity
+          </div>
+          <div className={`mt-4 p-4 rounded-xl border ${getBgColor(emotionIntensity)}`}> 
+            <p className="text-[14px] text-neutral-700 leading-relaxed">{emotionDescription}</p>
           </div>
         </div>
       
         {/* Communication tips for high intensity */}
         {emotionIntensity > 70 && (
-          <div className="mt-4 p-4 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl shadow-md">
-             <div className="flex items-start space-x-2">
-               <span className="text-amber-600 text-lg" aria-hidden="true">💡</span>
+          <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl w-full">
+             <div className="flex items-start gap-3">
+               <span className="text-amber-600 text-lg flex-shrink-0" aria-hidden="true">💡</span>
                <div>
-                 <h4 className="font-medium text-amber-800">Communication Tips</h4>
-                 <p className="text-sm text-amber-700 mt-1">
-                   High emotional intensity detected. Consider taking a break, using calming techniques, or communicating in a quieter environment.
+                 <h4 className="font-semibold text-amber-800 text-[14px]">High Intensity Detected</h4>
+                 <p className="text-[13px] text-amber-700 mt-1 leading-relaxed">
+                   Consider taking a break, using calming techniques, or communicating in a quieter environment.
                  </p>
                </div>
              </div>
