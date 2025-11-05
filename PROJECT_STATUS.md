@@ -153,9 +153,10 @@ The application is ready for demonstration with:
 ## 📋 Ship It Sunday #004 Planning
 
 - 📄 [方案讨论文档](./docs/planning/SHIP_IT_SUNDAY_004_OPTIONS.md) - 四个方案的详细对比分析
-- 🏗️ [方案 C 技术实现文档](./docs/planning/SHIP_IT_SUNDAY_004_TECH_SPEC.md) - Live Bridge 双人实时界面技术细节
-- 📐 [架构与 UI 设计图](./docs/planning/SHIP_IT_SUNDAY_004_DESIGN.md) - 技术架构图和 UI 线框图
+- 🏗️ [方案 C 技术实现文档](./docs/planning/SHIP_IT_SUNDAY_004_TECH_SPEC.md) ⭐ - Live Bridge 双人实时界面技术细节（已整合实证数据）
+- 📐 [架构与 UI 设计图](./docs/planning/SHIP_IT_SUNDAY_004_DESIGN.md) ⭐ - 技术架构图和 UI 线框图（已整合设计原则）
 - 📚 [论文发表指南](./docs/planning/RESEARCH_PUBLICATION_GUIDE.md) - 如何将项目转化为学术研究
+- 📊 [用户研究计划](./docs/planning/USER_RESEARCH_PLAN.md) ⭐ - 完整的研究方案（RCT + 纵向追踪）
 
 ## 📚 Literature Research (Live Bridge)
 
