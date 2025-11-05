@@ -168,8 +168,10 @@ The application is ready for demonstration with:
 
 ### 研究计划和搜索
 - 📋 [文献研究计划](./docs/literature/LITERATURE_RESEARCH_PLAN_C.md) - Live Bridge 研究计划
-- 🔍 [剩余搜索清单](./docs/literature/LITERATURE_REMAINING_SEARCHES.md) - 论文发表相关文献搜索
+- 🔍 [剩余搜索清单](./docs/literature/LITERATURE_REMAINING_SEARCHES.md) - 论文发表相关文献搜索（✅ 已完成）
 - 🔑 [搜索关键词指南](./docs/papers/SEARCH_KEYWORDS.md) - 双向对比 & 长期效果追踪关键词
+- 📚 [研究方法总结](./docs/literature/RESEARCH_METHODS_SUMMARY.md) ⭐ - 用户研究、伦理审查、评估方法、发表标准
+- 📖 [完整研究方法内容](./docs/literature/LITERATURE_APPENDED_RESEARCH.md) - 研究方法与论文发表详细内容（第953-1311行）
 
 ### 论文下载
 - 📥 [论文下载工具](./docs/papers/download_papers.py) - 自动下载 Tier 1 & Tier 2 文献
