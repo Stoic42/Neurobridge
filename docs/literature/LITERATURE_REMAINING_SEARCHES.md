@@ -7,12 +7,42 @@
 
 ## ✅ 已完成搜索
 
+### 核心研究内容
 - ✅ ASD-NT 实时沟通辅助技术（10+ 篇）
 - ✅ AI 中介沟通系统（15+ 篇）
 - ✅ 情绪识别系统（3+ 篇）
 - ✅ 意图分析和误解检测（2+ 篇）
 - ✅ 改写建议系统（5+ 篇）
 - ✅ 双人界面可访问性（5+ 篇）
+
+### 研究方法与论文发表（新增）⭐
+- ✅ **用户研究方法** - 已添加到 `LITERATURE_APPENDED_RESEARCH.md`
+  - Single-case designs, RCTs, Phased intervention designs
+  - Participant recruitment strategies
+  - Data collection methods (observational, standardized, fidelity measures)
+  
+- ✅ **伦理审查和知情同意** - 已添加到 `LITERATURE_APPENDED_RESEARCH.md`
+  - IRB application requirements
+  - Informed consent form design
+  - Special considerations for ASD users
+  - Data privacy protection
+
+- ✅ **评估方法和指标** - 已添加到 `LITERATURE_APPENDED_RESEARCH.md`
+  - Evaluation tool selection (ADOS, VABS)
+  - Assessment metric design
+  - Mixed methods research
+  - Long-term effect tracking
+
+- ✅ **论文发表标准** - 已添加到 `LITERATURE_APPENDED_RESEARCH.md`
+  - CHI & ASSETS 会议标准
+  - 期刊发表要求（Journal of Autism and Developmental Disorders, ACM TOCHI）
+  - Paper format guidelines
+  - Review criteria and submission process
+
+- ✅ **对比研究设计** - 已添加到 `LITERATURE_APPENDED_RESEARCH.md`
+  - Control group design
+  - Randomized Controlled Trials (RCT)
+  - A/B testing methods
 
 ---
 
