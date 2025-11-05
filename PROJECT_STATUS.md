@@ -152,17 +152,29 @@ The application is ready for demonstration with:
 
 ## 📋 Ship It Sunday #004 Planning
 
-- 📄 [方案讨论文档](./SHIP_IT_SUNDAY_004_OPTIONS.md) - 四个方案的详细对比分析
-- 🏗️ [方案 C 技术实现文档](./SHIP_IT_SUNDAY_004_TECH_SPEC.md) - Live Bridge 双人实时界面技术细节
-- 📐 [架构与 UI 设计图](./SHIP_IT_SUNDAY_004_DESIGN.md) - 技术架构图和 UI 线框图
+- 📄 [方案讨论文档](./docs/planning/SHIP_IT_SUNDAY_004_OPTIONS.md) - 四个方案的详细对比分析
+- 🏗️ [方案 C 技术实现文档](./docs/planning/SHIP_IT_SUNDAY_004_TECH_SPEC.md) - Live Bridge 双人实时界面技术细节
+- 📐 [架构与 UI 设计图](./docs/planning/SHIP_IT_SUNDAY_004_DESIGN.md) - 技术架构图和 UI 线框图
+- 📚 [论文发表指南](./docs/planning/RESEARCH_PUBLICATION_GUIDE.md) - 如何将项目转化为学术研究
 
 ## 📚 Literature Research (Live Bridge)
 
-- 📊 [文献研究总结](./LITERATURE_SUMMARY.md) ⭐ - 关键发现、统计数据、设计启示
-- 📖 [综合分析报告](./LITERATURE_COMPREHENSIVE_ANALYSIS.md) - 完整文献研究分析
-- 🔍 [新文献关键发现](./LITERATURE_NEW_FINDINGS_ANALYSIS.md) - 60+ 篇新文献的详细分析
-- 📝 [完整文献清单](./LITERATURE_COMPLETE_LIST.md) - 所有文献的分类整理
-- 💡 [深度分析](./LITERATURE_NEW_PONDER.md) - 用户添加的完整文献分析（原始数据）
+### 核心文档
+- 📊 [文献研究总结](./docs/literature/LITERATURE_SUMMARY.md) ⭐ - 关键发现、统计数据、设计启示
+- 📖 [综合分析报告](./docs/literature/LITERATURE_COMPREHENSIVE_ANALYSIS.md) ⭐ - 完整文献研究分析
+- 🔍 [新文献关键发现](./docs/literature/LITERATURE_NEW_FINDINGS_ANALYSIS.md) - 60+ 篇新文献的详细分析
+- 📝 [完整文献清单](./docs/literature/LITERATURE_COMPLETE_LIST.md) - 所有文献的分类整理
+- 💡 [深度分析](./docs/literature/LITERATURE_NEW_PONDER.md) - 用户添加的完整文献分析（原始数据）
+
+### 研究计划和搜索
+- 📋 [文献研究计划](./docs/literature/LITERATURE_RESEARCH_PLAN_C.md) - Live Bridge 研究计划
+- 🔍 [剩余搜索清单](./docs/literature/LITERATURE_REMAINING_SEARCHES.md) - 论文发表相关文献搜索
+- 🔑 [搜索关键词指南](./docs/papers/SEARCH_KEYWORDS.md) - 双向对比 & 长期效果追踪关键词
+
+### 论文下载
+- 📥 [论文下载工具](./docs/papers/download_papers.py) - 自动下载 Tier 1 & Tier 2 文献
+- 📋 [必读文献清单](./docs/papers/REQUIRED_PAPERS_LIST.md) - 10 篇必读文献列表
+- 📖 [使用指南](./docs/papers/README.md) - 下载和使用说明
 
 ---
 

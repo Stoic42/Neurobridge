@@ -1,0 +1,58 @@
+# 文件组织说明
+
+**创建日期**: 2025-11-05
+
+## 📁 文件夹结构
+
+```
+docs/
+├── planning/              # 项目规划文档
+│   ├── SHIP_IT_SUNDAY_004_OPTIONS.md
+│   ├── SHIP_IT_SUNDAY_004_TECH_SPEC.md
+│   ├── SHIP_IT_SUNDAY_004_DESIGN.md
+│   └── RESEARCH_PUBLICATION_GUIDE.md
+│
+├── literature/            # 文献研究文档
+│   ├── LITERATURE_RESEARCH_PLAN_C.md
+│   ├── LITERATURE_FINDINGS_LIVE_BRIDGE.md
+│   ├── LITERATURE_LIVE_BRIDGE_PONDER.md
+│   ├── LITERATURE_PONDER_ANALYSIS.md
+│   ├── LITERATURE_COMPREHENSIVE_ANALYSIS.md
+│   ├── LITERATURE_NEW_FINDINGS_ANALYSIS.md
+│   ├── LITERATURE_NEW_PONDER.md
+│   ├── LITERATURE_COMPLETE_LIST.md
+│   ├── LITERATURE_SUMMARY.md
+│   ├── LITERATURE_SEARCH_RESULTS.md
+│   ├── LITERATURE_REMAINING_SEARCHES.md
+│   └── LITERATURE.md
+│
+├── papers/               # 下载的论文（PDF + TXT）
+│   ├── tier1-required/  # Tier 1 必读文献
+│   ├── tier2-important/ # Tier 2 重要文献
+│   └── downloaded.txt   # 下载记录
+│
+└── organize_files.md    # 本文件
+```
+
+## 📋 文件移动计划
+
+### Planning 文档
+- SHIP_IT_SUNDAY_004_OPTIONS.md
+- SHIP_IT_SUNDAY_004_TECH_SPEC.md
+- SHIP_IT_SUNDAY_004_DESIGN.md
+- RESEARCH_PUBLICATION_GUIDE.md
+
+### Literature 文档
+- LITERATURE_RESEARCH_PLAN_C.md
+- LITERATURE_FINDINGS_LIVE_BRIDGE.md
+- LITERATURE_LIVE_BRIDGE_PONDER.md
+- LITERATURE_PONDER_ANALYSIS.md
+- LITERATURE_COMPREHENSIVE_ANALYSIS.md
+- LITERATURE_NEW_FINDINGS_ANALYSIS.md
+- LITERATURE_NEW_PONDER.md
+- LITERATURE_COMPLETE_LIST.md
+- LITERATURE_SUMMARY.md
+- LITERATURE_SEARCH_RESULTS.md
+- LITERATURE_REMAINING_SEARCHES.md
+- LITERATURE.md
+
