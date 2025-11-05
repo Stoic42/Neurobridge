@@ -2,6 +2,8 @@
 
 > 📚 **研究计划**: 针对 [Live Bridge 方案 C](./LITERATURE_RESEARCH_PLAN_C.md) 的专门文献研究计划已制定，包含 10 个关键研究方向、搜索策略和创新点发现方向。
 
+> 🔍 **文献发现**: 已完成的初步搜索和文献整理请查看 [LITERATURE_FINDINGS_LIVE_BRIDGE.md](./LITERATURE_FINDINGS_LIVE_BRIDGE.md)（包含 ArXiv 论文、实时通信系统研究等，但需要进一步在学术数据库中搜索 ASD-NT 沟通特化研究）。
+
 <details open><summary>Research on Autism Spectrum Disorder (ASD), Social Skills Training, and Related Interventions</summary>
 
 [Neonatal risk factors associated with autism spectrum disorders: an umbrella review](https://d3n7w3548u188s.cloudfront.net/2e801c59-50f0-4e8d-aef9-82d3331705bc)

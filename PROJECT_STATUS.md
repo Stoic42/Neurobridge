@@ -156,6 +156,14 @@ The application is ready for demonstration with:
 - 🏗️ [方案 C 技术实现文档](./SHIP_IT_SUNDAY_004_TECH_SPEC.md) - Live Bridge 双人实时界面技术细节
 - 📐 [架构与 UI 设计图](./SHIP_IT_SUNDAY_004_DESIGN.md) - 技术架构图和 UI 线框图
 
+## 📚 Literature Research (Live Bridge)
+
+- 📊 [文献研究总结](./LITERATURE_SUMMARY.md) ⭐ - 关键发现、统计数据、设计启示
+- 📖 [综合分析报告](./LITERATURE_COMPREHENSIVE_ANALYSIS.md) - 完整文献研究分析
+- 🔍 [新文献关键发现](./LITERATURE_NEW_FINDINGS_ANALYSIS.md) - 60+ 篇新文献的详细分析
+- 📝 [完整文献清单](./LITERATURE_COMPLETE_LIST.md) - 所有文献的分类整理
+- 💡 [深度分析](./LITERATURE_NEW_PONDER.md) - 用户添加的完整文献分析（原始数据）
+
 ---
 
 **Status**: ✅ **COMPLETE AND READY FOR USE**
