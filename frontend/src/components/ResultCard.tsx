@@ -9,7 +9,7 @@ interface ResultCardProps {
   className?: string;
 }
 
-const ResultCard: React.FC<ResultCardProps> = ({ result, originalText, className = '' }) => {
+const ResultCard: React.FC<ResultCardProps> = ({ result, originalText: _originalText, className = '' }) => {
   const { userRole, setLoading, setError, preferredTone, setPreferredTone } = useAppStore();
   const [toneAdjustments, setToneAdjustments] = useState<Record<ToneType, string | null>>({
     direct: null,

@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AxiosResponse } from 'axios';
 import type { TranslationRequest, TranslationResult, ToneAdjustmentRequest, ToneAdjustmentResult } from '../types/index.ts';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL !== undefined ? import.meta.env.VITE_API_URL : 'http://localhost:8000';
 
 // Create axios instance with default config
 const api = axios.create({
