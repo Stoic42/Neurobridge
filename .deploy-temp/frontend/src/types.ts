@@ -1,2 +1,0 @@
-// Barrel file that re-exports everything from types/index.ts
-export type { UserRole, ToneType, TranslationRequest, TranslationResult, ToneAdjustmentRequest, ToneAdjustmentResult, TranslationHistory, AppState } from './types/index';
