@@ -155,9 +155,9 @@ const PrivacyContent: React.FC = () => (
     <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
       <h4 className="font-medium text-blue-800 mb-2">🔒 Privacy Protection</h4>
       <ul className="space-y-1 text-blue-700">
-        <li>• All data is processed locally on your device</li>
-        <li>• No personal information is stored on our servers</li>
-        <li>• Translation history is saved only in your browser's local storage</li>
+        <li>• The text you enter is sent to our server, then forwarded to a third-party AI model provider (Alibaba Cloud Bailian, xAI, or OpenAI) to generate a response</li>
+        <li>• Our server logs the request metadata and text length, but does not store your text</li>
+        <li>• Our translation history is saved only in your browser's local storage, never on the server</li>
         <li>• You can clear your data anytime using the controls below</li>
         <li>• No cookies or tracking technologies are used</li>
       </ul>
@@ -179,9 +179,9 @@ const PrivacyContent: React.FC = () => (
     <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
       <h4 className="font-medium text-gray-800 mb-2">📊 Data Usage</h4>
       <ul className="space-y-1 text-gray-700">
-        <li>• We do not collect or share your personal data</li>
-        <li>• Your translations are not stored or analyzed by external services</li>
-        <li>• We strive to maintain your privacy and data security at all times</li>
+        <li>• We do not collect personal accounts or build a profile of you</li>
+        <li>• The AI provider that generates the response may process the text under their own privacy terms</li>
+        <li>• Please do not enter medical records, credentials, or other sensitive personal information</li>
       </ul>
     </div>
   </div>
